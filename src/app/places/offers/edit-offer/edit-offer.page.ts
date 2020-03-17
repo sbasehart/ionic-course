@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PlacesService } from '../../places.service';
+import { ActivatedRoute } from '@angular/router';
+import { Place } from '../../place.model';
 
 @Component({
   selector: 'app-edit-offer',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditOfferPage implements OnInit {
 
-  constructor() { }
+  orderId: string;
+  order: Place;
+
+  constructor(
+    private placesService: PlacesService, 
+    private activatedRoute: ActivatedRoute,  
+  ) { }
 
   ngOnInit() {
+    this.orderId = this.activatedRoute.snapshot.params['id']
+    this.order = this.placesService.getOffer(this.orderId);
   }
 
 }

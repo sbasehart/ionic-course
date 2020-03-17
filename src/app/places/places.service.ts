@@ -5,6 +5,9 @@ import { Place } from './place.model';
   providedIn: 'root'
 })
 export class PlacesService {
+  getorder(orderId: any): any {
+    throw new Error("Method not implemented.");
+  }
     places: Place[] = [
     {
       id: 'p1',
@@ -67,6 +70,17 @@ export class PlacesService {
   getOffer(id: any): any {
     const filteredOffer = this.offers.filter(offer => offer.id == id)[0];
     return filteredOffer;
+  }
+
+  editOffer(id: any): any{
+    const filteredOffer = this.offers.filter(offer => offer.id == id)[0];
+    return filteredOffer;
+  }
+
+  deleteOffer(id: any): any {
+    console.log(`Deleted offer ${id}`);
+    const index = this.offers.indexOf(id);
+    this.offers.splice(index, 1);
   }
 
 }
