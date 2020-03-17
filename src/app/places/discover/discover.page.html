@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>discover</ion-title>
+    <ion-title>Discover Places</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8"  class="flex text-center" *ngFor="let place of loadedPlaces">
+        <ion-card>
+          <ion-card-header color="primary">
+            <ion-label>
+              {{place.title}}
+            </ion-label>
+            <ion-card-subtitle>
+              {{place.price | currency}}
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-img [src]="place.imageUrl"></ion-img>
+          <ion-card-content>
+            <p>
+              {{place.description}}
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 
 </ion-content>
