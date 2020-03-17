@@ -36,4 +36,9 @@ export class PlacesService {
     return this.places
   }
 
+  getPlace(id: any): any {
+    const filteredPlace = this.places.filter(place => place.id == id)[0];
+    return filteredPlace;
+  }
+
 }
