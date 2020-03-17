@@ -24,6 +24,7 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+// @import "~materialize-css/sass/materialize";
 
 .text-center {
     text-align: center;
@@ -33,4 +34,12 @@
     align-content: center;
     align-items: center;
     margin: 0 auto
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-left {
+    text-align: left;
 }
