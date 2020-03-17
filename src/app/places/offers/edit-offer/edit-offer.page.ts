@@ -10,8 +10,8 @@ import { Place } from '../../place.model';
 })
 export class EditOfferPage implements OnInit {
 
-  orderId: string;
-  order: Place;
+  offer: Place;
+  offerId: string;
 
   constructor(
     private placesService: PlacesService, 
@@ -19,8 +19,15 @@ export class EditOfferPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.orderId = this.activatedRoute.snapshot.params['id']
-    this.order = this.placesService.getOffer(this.orderId);
+    this.offerId = this.activatedRoute.snapshot.params['id']
+    this.offer = this.placesService.getPlace(this.offerId);
+    console.log(this.offer)
+  }
+
+  ionViewWillLeave() {
+    // reset page properties for proper init/enter conditions
+    this.offer = undefined;
+    this.offerId = undefined;
   }
 
 }
