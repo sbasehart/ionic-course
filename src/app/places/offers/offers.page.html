@@ -22,7 +22,7 @@
               {{offer.title}}
             </ion-label>
             <ion-card-subtitle>
-              {{offer.price | currency}} per night
+              {{offer.price | currency}} per night + {{offer.addGuestFee | currency}} per additional guest
             </ion-card-subtitle>
           </ion-card-header>
           <ion-img [src]="offer.imageUrl"></ion-img>

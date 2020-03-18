@@ -3,7 +3,8 @@ export class Place {
     title: string;
     description: string;
     imageUrl: string;
-    price: number 
+    price: number;
+    addGuestFee: number;
 
     constructor(
         // public id: string,

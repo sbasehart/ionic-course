@@ -17,6 +17,8 @@ export class CreateBookingsComponent implements OnInit {
   booking: Booking = {
     id : '',
     placeId : this.selectedPlace.id,
+    userId : '',
+    guests : null,
     checkIn : new Date,
     nights: null,
     totalPrice: null,
@@ -43,45 +45,44 @@ export class CreateBookingsComponent implements OnInit {
   }
 
   incrementGuests(){
-    this.guests += 1;
-    console.log('Nights:', this.guests);
+    this.booking.guests += 1;
+    console.log('Nights:', this.booking.guests);
     this.getTotalPrice()
   }
     
-  decrementQty(){
-    if(this.nights-1 < 1){
-      this.nights = 1;
-      console.log('Nights:' + this.nights)
+  decrementGuests(){
+    if(this.booking.guests-1 < 1){
+      this.booking.guests = 1;
+      console.log('Nights:' + this.booking.guests)
     }
     else{
-      this.nights -= 1;
-      console.log('Nights:' + this.nights);
+      this.booking.guests -= 1;
+      console.log('Nights:' + this.booking.guests);
     }
     this.getTotalPrice()
   }
 
   incrementQty(){
-    this.nights += 1;
-    console.log('Nights:', this.nights);
+    this.booking.nights += 1;
+    console.log('Nights:', this.booking.nights);
     this.getTotalPrice()
   }
     
   decrementQty(){
-    if(this.nights-1 < 1){
-      this.nights = 1;
-      console.log('Nights:' + this.nights)
+    if(this.booking.nights-1 < 1){
+      this.booking.nights = 1;
+      console.log('Nights:' + this.booking.nights)
     }
     else{
-      this.nights -= 1;
-      console.log('Nights:' + this.nights);
+      this.booking.nights -= 1;
+      console.log('Nights:' + this.booking.nights);
     }
 
-\
   }
 
   getTotalPrice() {
-    this.totalPrice = this.nights * this.selectedPlace.price;
-    console.log(this.totalPrice)
+    this.booking.totalPrice = (this.booking.nights * this.selectedPlace.price) + (this.booking.guests > 1 ? (this.booking.guests - 1)  * this.selectedPlace.addGuestFee : 0);
+    console.log(this.booking.totalPrice)
   }
 
   onBookPlace() {
