@@ -13,8 +13,8 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 
   place: Place;
   placeId: string;
-  date: Date
 
+  date: Date
   item_qty = 1
 
   constructor(
@@ -28,27 +28,12 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
     this.place = this.placesService.getPlace(this.placeId);
   }
 
-  incrementQty(){
-    this.item_qty += 1;
-    console.log('Nights:', this.item_qty);
-  }
-    
-  decrementQty(){
-    if(this.item_qty-1 < 1){
-      this.item_qty = 1;
-      console.log('Nights:' + this.item_qty)
-    }
-    else{
-      this.item_qty -= 1;
-      console.log('Nights:' + this.item_qty);
-    }
-  }
-
   ionViewWillLeave() {
     // reset page properties for proper init/enter conditions
     this.place = undefined;
     this.placeId = undefined;
   }
+
 
   // chooseDate() {
   //   this.datePicker.show({
@@ -60,6 +45,11 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
   //     err => console.log('Error occurred while getting date: ', err)
   //   );
   // }
+
+  onBookPlace() {
+    this.modalCtrl
+    .create({component: Create})
+  }
 
   ngOnDestroy() {
 
