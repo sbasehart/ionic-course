@@ -4,6 +4,9 @@
       <ion-back-button defaultHref="places"></ion-back-button>
     </ion-buttons>
     <ion-title>{{place?.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button shape="round" (click) ="onFavorite()"><ion-icon name="heart"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -19,8 +22,7 @@
         {{place?.description}}
       </ion-col>
     </ion-row>
-    <ion-button shape="round" expand="full" (click) ="onBookPlace()">Book</ion-button>
+      <ion-button shape="round" expand="full" (click) ="onBookPlace()">Book</ion-button>
   </ion-grid>
-
 
 </ion-content>

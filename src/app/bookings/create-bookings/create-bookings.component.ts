@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Place } from 'src/app/places/place.model';
+import { NavController, ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { Booking } from '../booking.model';
+import { PlacesService } from 'src/app/places/places.service';
+import { BookingsService } from '../bookings.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-create-bookings',
@@ -6,28 +13,68 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-bookings.component.scss'],
 })
 export class CreateBookingsComponent implements OnInit {
+  selectedPlace: Place
+  booking: Booking = {
+    id : '',
+    placeId : this.selectedPlace.id,
+    checkIn : new Date,
+    nights: null,
+    totalPrice: null,
+  }
 
-  item_qty = 1
-  date: Date
+  bookingForm: FormGroup;
 
-  constructor() { }
 
-  ngOnInit() {}
+  constructor(
+    private modalCtrl: ModalController, 
+    private bookingService: BookingsService, 
+    private formBuilder: FormBuilder,
+    private router: Router
+    ) { }
+
+  ngOnInit() {
+    this.getTotalPrice();
+    this.booking.id = ''
+    this.bookingForm = this.formBuilder.group({
+      checkIn: null,
+      nights: null,
+      totalPrice: null
+    })
+  }
 
   incrementQty(){
-    this.item_qty += 1;
-    console.log('Nights:', this.item_qty);
+    this.nights += 1;
+    console.log('Nights:', this.nights);
+    this.getTotalPrice()
   }
     
   decrementQty(){
-    if(this.item_qty-1 < 1){
-      this.item_qty = 1;
-      console.log('Nights:' + this.item_qty)
+    if(this.nights-1 < 1){
+      this.nights = 1;
+      console.log('Nights:' + this.nights)
     }
     else{
-      this.item_qty -= 1;
-      console.log('Nights:' + this.item_qty);
+      this.nights -= 1;
+      console.log('Nights:' + this.nights);
     }
+    this.getTotalPrice()
+  }
+
+  getTotalPrice() {
+    this.totalPrice = this.nights * this.selectedPlace.price;
+    console.log(this.totalPrice)
+  }
+
+  onBookPlace() {
+    this.modalCtrl.dismiss({message: 'Submitted!'}, 'confirm')
+    this.bookingService.createBooking(this.bookingForm.value).subscribe((res: any) => {
+      const id = res.id;
+      this.router.navigate(['/bookings']);
+    })
+  }
+
+  close() {
+    this.modalCtrl.dismiss(null, 'cancel')
   }
 
 

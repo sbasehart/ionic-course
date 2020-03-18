@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Place } from '../../place.model';
 import { PlacesService } from '../../places.service';
 import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { CreateBookingsComponent } from 'src/app/bookings/create-bookings/create-bookings.component';
 // import { DatePicker } from '@ionic-native/date-picker/ngx';
 
 @Component({
@@ -19,7 +21,8 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 
   constructor(
     private placesService: PlacesService, 
-    private activatedRoute: ActivatedRoute,  
+    private activatedRoute: ActivatedRoute, 
+    private modalCtrl: ModalController 
     // private datePicker: DatePicker
     ) { }
 
@@ -48,11 +51,29 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 
   onBookPlace() {
     this.modalCtrl
-    .create({component: Create})
+    .create({
+      component: CreateBookingsComponent,
+      componentProps: {selectedPlace: this.place}
+    })
+    .then(modalEl => {
+      modalEl.present();
+      return modalEl.onDidDismiss()
+    })
+    .then(resultData => {
+      console.log(resultData.data, resultData.role)
+      if (resultData.role === 'confirm') {
+        console.log('booked')
+      }
+    })
   }
 
   ngOnDestroy() {
 
+  }
+
+  onFavorite() {
+    this.placesService.addToFavorites(this.place)
+    console.log(this.place, 'Added to Favorites')
   }
 
 }

@@ -17,11 +17,4 @@ export class NewOfferPage implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
-    this.placesService.createOffer(
-      this.offer.id = id,
-      
-    )
-  }
-
 }

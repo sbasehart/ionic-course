@@ -49,6 +49,8 @@ export class PlacesService {
     },
   ]
 
+  favorites: Place [] = []
+
   allPlaces: Place[] = this.offers.concat(this.places);
 
   constructor() { }
@@ -67,6 +69,15 @@ export class PlacesService {
     return this.offers
   }
 
+  addToFavorites(): any {
+    const filteredPlace = this.allPlaces.filter(place => place.id)[0];
+    this.favorites.push(filteredPlace)
+  }
+
+  getFavorites() {
+    return this.favorites
+  }
+
   getOffer(id: any): any {
     const filteredOffer = this.offers.filter(offer => offer.id == id)[0];
     return filteredOffer;
@@ -77,10 +88,22 @@ export class PlacesService {
     return filteredOffer;
   }
 
+  createOffer(newOffer: Place): any {
+    newOffer.id = this.nextOfferId();
+    this.offers.push(newOffer);
+    return newOffer.id;
+  }
+
   deleteOffer(id: any): any {
     console.log(`Deleted offer ${id}`);
     const index = this.offers.indexOf(id);
     this.offers.splice(index, 1);
+  }
+
+  nextOfferId(): string {
+    const maxOfferId = this.offers.reduce((max, item) => (item.id > max) ? item.id : max, this.offers[0].id);
+    const newOfferId = (maxOfferId + 1);
+    return newOfferId;
   }
 
 }
