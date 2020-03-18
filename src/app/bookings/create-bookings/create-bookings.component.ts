@@ -42,6 +42,24 @@ export class CreateBookingsComponent implements OnInit {
     })
   }
 
+  incrementGuests(){
+    this.guests += 1;
+    console.log('Nights:', this.guests);
+    this.getTotalPrice()
+  }
+    
+  decrementQty(){
+    if(this.nights-1 < 1){
+      this.nights = 1;
+      console.log('Nights:' + this.nights)
+    }
+    else{
+      this.nights -= 1;
+      console.log('Nights:' + this.nights);
+    }
+    this.getTotalPrice()
+  }
+
   incrementQty(){
     this.nights += 1;
     console.log('Nights:', this.nights);
@@ -57,7 +75,8 @@ export class CreateBookingsComponent implements OnInit {
       this.nights -= 1;
       console.log('Nights:' + this.nights);
     }
-    this.getTotalPrice()
+
+\
   }
 
   getTotalPrice() {

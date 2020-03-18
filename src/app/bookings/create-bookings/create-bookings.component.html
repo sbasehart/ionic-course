@@ -27,6 +27,20 @@
     <ion-row>
       <ion-col class="text-center">
         <!-- <span>&nbsp;&nbsp;{{booking.checkIn}}&nbsp;&nbsp;</span> -->
+        <ion-button class="qty" (click)="decrementGuests()">
+          <ion-icon name="remove"></ion-icon>
+        </ion-button>
+        <span>&nbsp;&nbsp;{{booking?.guests}}&nbsp;&nbsp;</span>
+        <ion-button class="qty" (click)="incrementGuests()">
+          <ion-icon name="add"></ion-icon>
+        </ion-button>
+        <span>&nbsp;&nbsp;Guest(s)</span>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col class="text-center">
+        <!-- <span>&nbsp;&nbsp;{{booking.checkIn}}&nbsp;&nbsp;</span> -->
         <ion-button class="qty" (click)="decrementQty()">
           <ion-icon name="remove"></ion-icon>
         </ion-button>
