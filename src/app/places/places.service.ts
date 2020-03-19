@@ -15,7 +15,7 @@ export class PlacesService {
       description: 'In New York',
       imageUrl: 'https://static1.mansionglobal.com/production/media/article-images/19a538cb0caa9f8ffca9a4375babcc21/small_3113.jpg',
       price: 420.59,
-      addGuestFee: 80
+      addGuestFee: 80,
     },
     {
       id: 'p2',

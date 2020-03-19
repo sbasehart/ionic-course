@@ -14,15 +14,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class CreateBookingsComponent implements OnInit {
   selectedPlace: Place
-  booking: Booking = {
-    id : '',
-    placeId : this.selectedPlace.id,
-    userId : '',
-    guests : null,
-    checkIn : new Date,
-    nights: null,
-    totalPrice: null,
-  }
+  booking: Booking
 
   bookingForm: FormGroup;
 
@@ -35,11 +27,12 @@ export class CreateBookingsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.booking =  this.bookingService.createBooking(new Booking)
     this.getTotalPrice();
-    this.booking.id = ''
     this.bookingForm = this.formBuilder.group({
+      placeId : this.selectedPlace.id,
       checkIn: null,
-      nights: null,
+      nights: 1,
       totalPrice: null
     })
   }

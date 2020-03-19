@@ -15,7 +15,7 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 
   place: Place;
   placeId: string;
-
+  favorited = false
   date: Date
   item_qty = 1
 
@@ -73,6 +73,7 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
 
   onFavorite() {
     this.placesService.addToFavorites(this.place.id)
+    this.favorited = true
     console.log(this.place, 'Added to Favorites')
   }
 
