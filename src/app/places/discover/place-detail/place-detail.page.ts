@@ -72,7 +72,7 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
   }
 
   onFavorite() {
-    this.placesService.addToFavorites(this.place)
+    this.placesService.addToFavorites(this.place.id)
     console.log(this.place, 'Added to Favorites')
   }
 

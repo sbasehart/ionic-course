@@ -8,13 +8,13 @@ import { PlacesService } from '../places/places.service';
   styleUrls: ['./favorites.page.scss'],
 })
 export class FavoritesPage implements OnInit {
-  favs: Place[];
+  loadedFavs: Place[];
 
   constructor(private placesService: PlacesService,) { }
 
   ngOnInit() {
-    this.favs = this.placesService.getFavorites();
-    console.log(this.favs)
+    this.loadedFavs = this.placesService.getFavorites();
+    console.log(this.loadedFavs)
   }
 
 

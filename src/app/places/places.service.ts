@@ -74,8 +74,8 @@ export class PlacesService {
     return this.offers
   }
 
-  addToFavorites(): any {
-    const filteredPlace = this.allPlaces.filter(place => place.id)[0];
+  addToFavorites(id: any): any {
+    const filteredPlace = this.allPlaces.filter(place => place.id == id)[0];
     this.favorites.push(filteredPlace)
   }
 
