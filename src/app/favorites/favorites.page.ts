@@ -14,7 +14,7 @@ export class FavoritesPage implements OnInit {
 
   ngOnInit() {
     this.loadedFavs = this.placesService.getFavorites();
-    console.log(this.loadedFavs)
+    console.log(this.loadedFavs, 1584631664084)
   }
 
 

@@ -8,5 +8,9 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-label>Check In Date : </ion-label>
+    <ion-datetime [(ngModel)]="date"></ion-datetime>
+  </ion-item>
+  <ion-button (click)="this()">Submit</ion-button>
 </ion-content>

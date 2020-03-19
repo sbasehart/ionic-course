@@ -11,10 +11,11 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" class="flex text-center" *ngIf="loadedPlaces[0]">
-        <ion-card  [routerLink]="['/', 'places', 'tabs', 'discover', loadedPlaces[0]?.id]">
+        <ion-card class="featured"  [routerLink]="['/', 'places', 'tabs', 'discover', loadedPlaces[0]?.id]">
+          <ion-badge color="primary">New!</ion-badge><br>
           <ion-card-header>
             <ion-label>
-              {{loadedPlaces[0]?.title}}
+              {{loadedPlaces[0]?.title}} 
             </ion-label>
             <ion-card-subtitle>
               {{loadedPlaces[0]?.price | currency}} per night
@@ -28,6 +29,7 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
+      
       <ion-col size="6" class="flex text-center" *ngFor="let place of loadedPlaces.slice(1)">
         <ion-card [routerLink]="['/', 'places', 'tabs', 'discover', place.id]">
           <ion-card-header>

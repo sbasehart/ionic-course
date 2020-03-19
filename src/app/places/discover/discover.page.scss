@@ -6,8 +6,14 @@ ion-button {
     margin: 0 auto
 }
 
+.featured {
+    border-top: 7px solid var(--ion-color-primary-shade);
+    border-bottom: 7px solid var(--ion-color-primary-shade);
+}
+
 .notFeatured {
-    margin: 10px 5px
+    margin: 10px 5px;
+    width: 100%
 }
 
 .button {
