@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingsService } from './bookings.service';
 import { Booking } from './booking.model';
+import { Place } from '../places/place.model';
+import { PlacesService } from '../places/places.service';
 
 @Component({
   selector: 'app-bookings',
@@ -10,13 +12,15 @@ import { Booking } from './booking.model';
 export class BookingsPage implements OnInit {
 
   date: Date
+  places: Place[]
+  bookings : Booking[]
+  bookedPlace: Place
 
-  loadedBookings : Booking[]
-
-  constructor(private bookingsService: BookingsService) { }
+  constructor(private bookingsService: BookingsService, private placesService: PlacesService) { }
 
   ngOnInit() {
-    this.loadedBookings = this.bookingsService.getBookings()
+    this.bookings = this.bookingsService.getBookings()
+    this.places = this.placesService.getPlaces()
   }
 
   this() {

@@ -8,9 +8,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Check In Date : </ion-label>
-    <ion-datetime [(ngModel)]="date"></ion-datetime>
-  </ion-item>
-  <ion-button (click)="this()">Submit</ion-button>
+<ion-grid>
+  <ion-row>
+    <ion-item *ngFor="let booking of bookings">
+      <ion-subheader *ngFor="let place of booking.placeId">
+        Booking: {{place.title}}
+      </ion-subheader>
+    </ion-item>
+  </ion-row>
+</ion-grid>
 </ion-content>
