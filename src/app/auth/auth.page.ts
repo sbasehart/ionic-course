@@ -9,8 +9,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./auth.page.scss'],
 })
 export class AuthPage implements OnInit {
+  isLogin = true
+  isSignup = false
 
-  constructor(private authService: AuthService, private navCtrl: NavController) { }
+  constructor(
+    private authService: AuthService, 
+    private navCtrl: NavController
+  ) { }
 
   ngOnInit() {
   }
@@ -21,9 +26,18 @@ export class AuthPage implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    if (!form.valid) {
+      return
+    }
+    const email = form.value.email
+    const password = form.value.password
     
-    this.onLogin()
-    console.log(form)
   }
+
+  onSwitchMode() {
+    this.isLogin = !this.isLogin,
+    this.isSignup = !this.isSignup
+  }
+
 
 }
