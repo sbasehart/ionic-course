@@ -93,6 +93,11 @@ export class PlacesService {
     return filteredOffer;
   }
 
+  updateOffer(id:any): any {
+    const filteredOffer = this.offers.filter(offer => offer.id == id)[0];
+    this.offers.push(filteredOffer)
+  }
+
   createOffer(newOffer: Place): any {
     newOffer.id = this.nextOfferId();
     this.offers.push(newOffer);

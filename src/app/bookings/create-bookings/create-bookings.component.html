@@ -18,8 +18,26 @@
     <ion-row>
       <ion-col>
         <ion-item>
+          <ion-label>First Name : </ion-label>
+          <ion-input type="text" formControlName="firstName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Last Name : </ion-label>
+          <ion-input type="text" formControlName="lastName"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col>
+        <ion-item>
           <ion-label>Check In Date : </ion-label>
-          <ion-datetime [(ngModel)]="booking.checkIn"></ion-datetime>
+          <ion-datetime formControlName="checkIn"></ion-datetime>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -27,13 +45,13 @@
     <ion-row>
       <ion-col class="text-center">
         <!-- <span>&nbsp;&nbsp;{{booking.checkIn}}&nbsp;&nbsp;</span> -->
-        <ion-button class="qty" (click)="decrementGuests()">
+        <!-- <ion-button class="qty" (click)="decrementGuests()">
           <ion-icon name="remove"></ion-icon>
-        </ion-button>
-        <span>&nbsp;&nbsp;{{booking?.guests}}&nbsp;&nbsp;</span>
-        <ion-button class="qty" (click)="incrementGuests()">
+        </ion-button> -->
+        <ion-input [disabled] formControlName="guests">&nbsp;&nbsp;{{booking.guests}}&nbsp;&nbsp;</ion-input>
+        <!-- <ion-button class="qty" (click)="incrementGuests()">
           <ion-icon name="add"></ion-icon>
-        </ion-button>
+        </ion-button> -->
         <span>&nbsp;&nbsp;Guest(s)</span>
       </ion-col>
     </ion-row>
@@ -41,23 +59,23 @@
     <ion-row>
       <ion-col class="text-center">
         <!-- <span>&nbsp;&nbsp;{{booking.checkIn}}&nbsp;&nbsp;</span> -->
-        <ion-button class="qty" (click)="decrementQty()">
+        <!-- <ion-button class="qty" (click)="decrementQty()">
           <ion-icon name="remove"></ion-icon>
-        </ion-button>
-        <span>&nbsp;&nbsp;{{booking?.nights}}&nbsp;&nbsp;</span>
-        <ion-button class="qty" (click)="incrementQty()">
+        </ion-button> -->
+        <span><ion-input [disabled] formControlName="nights"></ion-input></span>
+        <!-- <ion-button class="qty" (click)="incrementQty()">
           <ion-icon name="add"></ion-icon>
-        </ion-button>
+        </ion-button> -->
         <span>&nbsp;&nbsp;Night(s)</span>
       </ion-col>
     </ion-row>
     <ion-col size="6" class="text-center">
-      <h3>Total Price: {{booking?.totalPrice | currency}}</h3>
+      <ion-input [disabled] formControlName="totalPrice">Total Price: {{booking.totalPrice | currency}}</ion-input>
     </ion-col>
     <ion-row >
       <ion-col size="12" class="text-center">
       <ion-button color="warning" (click)="close()">Cancel</ion-button>
-      <ion-button color="primary" (click)="onBookPlace()">Submit Booking Request</ion-button>
+      <ion-button color="primary" typ="submit">Submit Booking Request</ion-button>
     </ion-col>
     </ion-row>
    </form>

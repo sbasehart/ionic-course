@@ -10,7 +10,8 @@ export class BookingsService {
     // {
     //   id: 'b1',
     //   placeId: 'p2',
-    //   userId: 'u1236',
+    //   firstName: 'Summer',
+    //   lastName: 'Basehart',
     //   guests: 2,
     //   checkIn: ,
     //   nights: 2,

@@ -1,7 +1,9 @@
 export class Booking {
     id: string;
     placeId: string;
-    userId: string;
+    firstName: string;
+    lastName: string; 
+    // userId: string;
     guests: number;
     checkIn: Date;
     nights: number;

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Booking } from '../booking.model';
 import { PlacesService } from 'src/app/places/places.service';
 import { BookingsService } from '../bookings.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create-bookings',
@@ -28,29 +28,32 @@ export class CreateBookingsComponent implements OnInit {
 
   ngOnInit() {
     this.booking =  this.bookingService.createBooking(new Booking)
-    this.getTotalPrice();
-    this.bookingForm = this.formBuilder.group({
-      placeId : this.selectedPlace.id,
-      checkIn: null,
-      nights: 1,
-      totalPrice: null
+    // this.getTotalPrice();
+    this.bookingForm = new FormGroup({
+      firstName: new FormControl(),
+      lastName: new FormControl(),
+      placeId : new FormControl(this.selectedPlace.id),
+      guests : new FormControl(),
+      checkIn: new FormControl(),
+      nights: new FormControl(),
+      totalPrice: new FormControl()
     })
   }
 
   incrementGuests(){
     this.booking.guests += 1;
-    console.log('Nights:', this.booking.guests);
+    console.log('Guests:', this.booking.guests);
     this.getTotalPrice()
   }
     
   decrementGuests(){
     if(this.booking.guests-1 < 1){
       this.booking.guests = 1;
-      console.log('Nights:' + this.booking.guests)
+      console.log('Guests:' + this.booking.guests)
     }
     else{
       this.booking.guests -= 1;
-      console.log('Nights:' + this.booking.guests);
+      console.log('Guests:' + this.booking.guests);
     }
     this.getTotalPrice()
   }
@@ -82,8 +85,8 @@ export class CreateBookingsComponent implements OnInit {
     this.modalCtrl.dismiss({message: 'Submitted!'}, 'confirm')
     this.bookingService.createBooking(this.bookingForm.value).subscribe((res: any) => {
       const id = res.id;
-      this.router.navigate(['/bookings']);
     })
+    this.router.navigate(['/bookings']);
   }
 
   close() {
