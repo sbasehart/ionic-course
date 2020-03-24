@@ -8,13 +8,22 @@
 </ion-header>
 
 <ion-content>
-<ion-grid>
-  <ion-row>
-    <ion-item *ngFor="let booking of bookings">
-      <ion-subheader *ngFor="let place of booking.placeId">
-        Booking: {{place.title}}
-      </ion-subheader>
-    </ion-item>
-  </ion-row>
-</ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-card *ngFor="let booking of bookings">
+        <ion-card-header *ngFor="let place of places" value>
+          Booking: {{place.title}}
+        </ion-card-header>
+        <ion-card-content>
+          Check In: {{booking.checkIn}}
+          Nights: {{booking.nights}}
+          Guests: {{booking.guests}}
+          Total: {{booking.totalPrice}}
+        </ion-card-content>
+        <ion-footer>
+          {{booking.firstName}} {{booking.lastName}}
+        </ion-footer>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
 </ion-content>
