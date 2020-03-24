@@ -11,17 +11,17 @@ const routes: Routes = [
   {
     path: 'places',
     loadChildren: () => import('./places/places.module').then( m => m.PlacesPageModule), 
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
   {
     path: 'bookings',
     loadChildren: () => import('./bookings/bookings.module').then( m => m.BookingsPageModule), 
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
   {
     path: 'favorites',
     loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule), 
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },
 ];
 

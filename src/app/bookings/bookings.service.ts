@@ -13,7 +13,7 @@ export class BookingsService {
       firstName: 'Summer',
       lastName: 'Basehart',
       guests: 2,
-      checkIn: new Date,
+      checkIn: new Date("2020-02-12"),
       nights: 2,
       totalPrice: 611.38,
     }
