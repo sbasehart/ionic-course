@@ -7,16 +7,16 @@ import { Booking } from './booking.model';
 export class BookingsService {
 
   private _bookings: Booking[] = [
-    // {
-    //   id: 'b1',
-    //   placeId: 'p2',
-    //   firstName: 'Summer',
-    //   lastName: 'Basehart',
-    //   guests: 2,
-    //   checkIn: ,
-    //   nights: 2,
-    //   totalPrice: 611.38,
-    // }
+    {
+      id: 'b1',
+      placeId: 'p2',
+      firstName: 'Summer',
+      lastName: 'Basehart',
+      guests: 2,
+      checkIn: new Date,
+      nights: 2,
+      totalPrice: 611.38,
+    }
   ]
   get bookings() {
     return [...this._bookings]
