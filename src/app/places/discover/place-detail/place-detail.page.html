@@ -6,6 +6,7 @@
     <ion-title>{{place?.title}}</ion-title>
     <ion-buttons slot="end">
       <ion-button shape="round" [disabled]="favorited" (click)="onFavorite()">
+        <ion-label *ngIf="favorited === true" color="warning">Added to Favorites!</ion-label>&nbsp;&nbsp;
         <ion-icon [name]="favorited ? 'heart' : 'heart-outline'"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -14,11 +15,6 @@
 
 <ion-content *ngIf="place">
   <ion-grid>
-    <ion-row *ngIf="favorited === true">
-      <ion-col class="text-center">
-        <ion-label color="warning">Added to Favorites!</ion-label>
-      </ion-col>
-    </ion-row>
     <ion-row>
       <ion-col size="6">
         <ion-img [src]="place?.imageUrl"></ion-img>

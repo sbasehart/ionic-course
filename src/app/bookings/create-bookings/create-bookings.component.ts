@@ -28,52 +28,19 @@ export class CreateBookingsComponent implements OnInit {
 
   ngOnInit() {
     this.booking =  this.bookingService.createBooking(new Booking)
-    // this.getTotalPrice();
     this.bookingForm = new FormGroup({
       firstName: new FormControl(),
       lastName: new FormControl(),
-      placeId : new FormControl(this.selectedPlace.id),
       guests : new FormControl(),
       checkIn: new FormControl(),
       nights: new FormControl(),
-      totalPrice: new FormControl()
     })
+    this.getTotalPrice();
+    this.getPlace()
   }
 
-  incrementGuests(){
-    this.booking.guests += 1;
-    console.log('Guests:', this.booking.guests);
-    this.getTotalPrice()
-  }
-    
-  decrementGuests(){
-    if(this.booking.guests-1 < 1){
-      this.booking.guests = 1;
-      console.log('Guests:' + this.booking.guests)
-    }
-    else{
-      this.booking.guests -= 1;
-      console.log('Guests:' + this.booking.guests);
-    }
-    this.getTotalPrice()
-  }
-
-  incrementQty(){
-    this.booking.nights += 1;
-    console.log('Nights:', this.booking.nights);
-    this.getTotalPrice()
-  }
-    
-  decrementQty(){
-    if(this.booking.nights-1 < 1){
-      this.booking.nights = 1;
-      console.log('Nights:' + this.booking.nights)
-    }
-    else{
-      this.booking.nights -= 1;
-      console.log('Nights:' + this.booking.nights);
-    }
-
+  getPlace() {
+    this.booking.placeId = this.selectedPlace.id
   }
 
   getTotalPrice() {
@@ -92,6 +59,44 @@ export class CreateBookingsComponent implements OnInit {
   close() {
     this.modalCtrl.dismiss(null, 'cancel')
   }
+
+  // incrementGuests(){
+  //   this.booking.guests += 1;
+  //   console.log('Guests:', this.booking.guests);
+  //   this.getTotalPrice()
+  // }
+    
+  // decrementGuests(){
+  //   if(this.booking.guests-1 < 1){
+  //     this.booking.guests = 1;
+  //     console.log('Guests:' + this.booking.guests)
+  //   }
+  //   else{
+  //     this.booking.guests -= 1;
+  //     console.log('Guests:' + this.booking.guests);
+  //   }
+  //   this.getTotalPrice()
+  // }
+
+  // incrementQty(){
+  //   this.booking.nights += 1;
+  //   console.log('Nights:', this.booking.nights);
+  //   this.getTotalPrice()
+  // }
+    
+  // decrementQty(){
+  //   if(this.booking.nights-1 < 1){
+  //     this.booking.nights = 1;
+  //     console.log('Nights:' + this.booking.nights)
+  //   }
+  //   else{
+  //     this.booking.nights -= 1;
+  //     console.log('Nights:' + this.booking.nights);
+  //   }
+
+  // }
+
+ 
 
 
 }
