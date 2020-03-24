@@ -35,8 +35,8 @@ export class CreateBookingsComponent implements OnInit {
       checkIn: new FormControl(),
       nights: new FormControl(),
     })
-    this.getTotalPrice();
-    this.getPlace()
+
+
   }
 
   getPlace() {
@@ -52,6 +52,8 @@ export class CreateBookingsComponent implements OnInit {
     this.modalCtrl.dismiss({message: 'Submitted!'}, 'confirm')
     this.bookingService.createBooking(this.bookingForm.value).subscribe((res: any) => {
       const id = res.id;
+      const totalPrice = this.getTotalPrice()
+      const placeId = this.getPlace()
     })
     this.router.navigate(['/bookings']);
   }

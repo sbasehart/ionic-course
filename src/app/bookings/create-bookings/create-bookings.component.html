@@ -58,12 +58,12 @@
     </ion-row>
     <br>
     <ion-col size="6" class="text-center">
-      <ion-text>Total Price: {{booking?.totalPrice | currency}}</ion-text>
+      <ion-text>Total Price: {{(this.booking.nights * this.selectedPlace.price) + (this.booking.guests > 1 ? (this.booking.guests - 1)  * this.selectedPlace.addGuestFee : 0) | currency}}</ion-text>
     </ion-col>
     <ion-row >
       <ion-col size="12" class="text-center">
       <ion-button color="warning" (click)="close()">Cancel</ion-button>
-      <ion-button color="primary" typ="submit">Submit Booking Request</ion-button>
+      <ion-button color="primary" type="submit" (click)="onBookPlace()">Submit Booking Request</ion-button>
     </ion-col>
     </ion-row>
    </form>
