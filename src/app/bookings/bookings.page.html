@@ -12,16 +12,18 @@
     <ion-row>
       <ion-card *ngFor="let booking of bookings">
         <ion-card-header value>
-          Booking: {{place.title}}
+          Booking: {{booking.id}} under {{booking.firstName}} {{booking.lastName}}
         </ion-card-header>
         <ion-card-content>
-          Check In: {{booking.checkIn}}
-          Nights: {{booking.nights}}
-          Guests: {{booking.guests}}
+          Check In: {{booking.checkIn}}<br>
+          Nights: {{booking.nights}}<br>
+          Guests: {{booking.guests}}<br>
           Total: {{booking.totalPrice}}
         </ion-card-content>
         <ion-footer>
-          {{booking.firstName}} {{booking.lastName}}
+          <ion-card-subtitle *ngIf="booking?.placeId">
+            {{bookedPlace.title}}
+          </ion-card-subtitle>
         </ion-footer>
       </ion-card>
     </ion-row>

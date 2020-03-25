@@ -13,6 +13,7 @@ export class BookingsPage implements OnInit {
 
   date: Date
   places: Place[]
+  booking : Booking
   bookings : Booking[]
   bookedPlace: Place
 
@@ -21,6 +22,12 @@ export class BookingsPage implements OnInit {
   ngOnInit() {
     this.bookings = this.bookingsService.getBookings()
     this.places = this.placesService.getPlaces()
+    this.getBooking()
+  }
+
+  getBooking() {
+    const id = this.booking.placeId;
+    this.bookedPlace = this.placesService.getPlace(id)
   }
 
   this() {
