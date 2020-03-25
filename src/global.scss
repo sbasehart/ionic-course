@@ -49,5 +49,13 @@
 }
 
 ion-item {
-    max-width: 800px
+    max-width: 800px;
+    border: none !important
+}
+
+ion-input, ion-textarea {
+    border: lightgrey 1px solid;
+    border-radius: 10px;
+    margin: 10px auto;
+    padding: 5px
 }
