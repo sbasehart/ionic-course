@@ -11,12 +11,12 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-list>
             <ion-item class="text-center">
-              <ion-label position="floating">Email&nbsp;&nbsp;&nbsp;<ion-badge slot="end" *ngIf="!emailCtrl.valid && emailCtrl.touched" color="danger">Invalid</ion-badge>
+              <ion-label position="stacked">Email&nbsp;&nbsp;&nbsp;<ion-badge slot="end" *ngIf="!emailCtrl.valid && emailCtrl.touched" color="danger">Invalid</ion-badge>
               </ion-label>
               <ion-input type="email" [(ngModel)]="email" name="email" required #emailCtrl="ngModel"></ion-input>
             </ion-item>
             <ion-item class="text-center">
-              <ion-label position="floating">Password&nbsp;&nbsp;&nbsp;<ion-badge slot="end"  *ngIf="!passwordCtrl.valid && passwordCtrl.touched" color="danger">Invalid</ion-badge></ion-label>
+              <ion-label position="stacked">Password&nbsp;&nbsp;&nbsp;<ion-badge slot="end"  *ngIf="!passwordCtrl.valid && passwordCtrl.touched" color="danger">Invalid</ion-badge></ion-label>
               <ion-input type="password" [(ngModel)]="password" name="password" required minlength="6" #passwordCtrl="ngModel"></ion-input>
             </ion-item>
           </ion-list>

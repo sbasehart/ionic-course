@@ -17,18 +17,16 @@ export class BookingsPage implements OnInit {
   bookings : Booking[]
   bookedPlace: Place
 
-  constructor(private bookingsService: BookingsService, private placesService: PlacesService) { }
+  constructor(private bookingsService: BookingsService) { }
 
   ngOnInit() {
     this.bookings = this.bookingsService.getBookings()
-    this.places = this.placesService.getPlaces()
-    this.getBooking()
   }
 
-  getBooking() {
-    const id = this.booking.placeId;
-    this.bookedPlace = this.placesService.getPlace(id)
-  }
+  // getBooking() {
+  //   const id = this.booking.placeId;
+  //   this.bookedPlace = this.placesService.getPlace(id)
+  // }
 
   this() {
     console.log()

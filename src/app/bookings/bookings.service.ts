@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Booking } from './booking.model';
+import { PlacesService } from '../places/places.service';
+import { Place } from '../places/place.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +24,11 @@ export class BookingsService {
     return [...this._bookings]
   }
 
+  bookedPlace: Place
+
   randomId = Math.floor(Math.random() * 999)
 
-  constructor() { }
+  constructor(private placesService: PlacesService) { }
 
   getBookings() {
     return this.bookings
@@ -32,6 +36,7 @@ export class BookingsService {
 
   getBooking(id: any): any {
     const filteredBooking = this.bookings.filter(booking => booking.id == id)[0];
+    const bookedPlace = this.placesService.getPlace(filteredBooking.placeId)
     return filteredBooking;
   }
 
