@@ -15,7 +15,7 @@
           Booking: {{booking.id}} under {{booking.firstName}} {{booking.lastName}}
         </ion-card-header>
         <ion-card-content>
-          Check In: {{booking.checkIn}}<br>
+          Check In: {{booking.checkIn | date}}<br>
           Nights: {{booking.nights}}<br>
           Guests: {{booking.guests}}<br>
           Total: {{booking.totalPrice}}

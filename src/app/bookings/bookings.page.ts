@@ -17,10 +17,17 @@ export class BookingsPage implements OnInit {
   bookings : Booking[]
   bookedPlace: Place
 
-  constructor(private bookingsService: BookingsService) { }
+  constructor(private bookingsService: BookingsService, private placesService:PlacesService) { }
 
   ngOnInit() {
     this.bookings = this.bookingsService.getBookings()
+    // this.bookedPlace = this.bookings.map(this.bookings, this.bookings.property('placeId.aNumber'));
+
+    this.places = this.bookingsService.getBookings()
+    .map(booking => {
+      this.placesService.getPlace(booking.placeId)
+      return this.bookedPlace
+    } );
   }
 
   // getBooking() {

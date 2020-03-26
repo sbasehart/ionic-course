@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Place } from './place.model';
+import { Observable, of, BehaviorSubject } from 'rxjs'; 
+import { pipe } from "rxjs";
+import { map, take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlacesService {
-  getorder(orderId: any): any {
-    throw new Error("Method not implemented.");
-  }
+  // getorder(orderId: any): any {
+  //   throw new Error("Method not implemented.");
+  // }
     places: Place[] = [
     {
       id: 'p1',
@@ -83,17 +86,37 @@ export class PlacesService {
     return this.favorites
   }
 
+  deleteFavorite(id: any): any {
+    console.log(`Deleted favorite ${id}`);
+    const index = this.favorites.indexOf(id);
+    this.favorites.splice(index, 1);
+  }
+
   getOffer(id: any): any {
     const filteredOffer = this.offers.filter(offer => offer.id == id)[0];
     return filteredOffer;
   }
 
-  editOffer(id: any): any{
-    const filteredOffer = this.offers.filter(offer => offer.id == id)[0];
-    return filteredOffer;
+  editOffer(id: any, title: string, description: string, imageUrl: string, price: number, addGuestFee: number): any{
+    return this.offers.pipe(take(1), tap(offers => {
+      const filteredOffer = this.offers.findIndex(offer => offer.id == id)[0];
+      const updatedPlaces = [...this.allPlaces];
+      const oldPlace = updatedPlaces[filteredOffer]
+      updatedPlaces[filteredOffer] = new Place(
+        oldPlace.id,
+        title,
+        description,
+        imageUrl,
+        price,
+        addGuestFee
+      )
+    }))
+
+    // this.offers.push(filteredOffer)
+    // return filteredOffer;
   }
 
-  updateOffer(id:any): any {
+  updateOffer(id: any, title: string, description: string, imageUrl: string, price: number, addGuestFee: number): any {
     const filteredOffer = this.offers.filter(offer => offer.id == id)[0];
     this.offers.push(filteredOffer)
   }
